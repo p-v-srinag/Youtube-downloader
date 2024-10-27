@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Channel Downloader</title>
+    <style>
+        /* Basic CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #0073e6;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            color: #555;
+            display: block;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .form-group input[type="url"] {
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .form-group input[type="url"]:focus {
+            border-color: #0073e6;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #0073e6;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #005bb5;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Download YouTube Channel Videos</h1>
+        <p>Enter the YouTube channel URL to download all videos.</p>
+        
+        <div class="form-group">
+            <label for="channelUrl">YouTube Channel URL</label>
+            <input type="url" id="channelUrl" placeholder="https://www.youtube.com/channel/CHANNEL_ID" required>
+            <div class="error" id="error"></div>
+        </div>
+        
+        <button class="submit-btn" onclick="processUrl()">Submit</button>
+    </div>
+
+    <script>
+        function processUrl() {
+            const channelUrl = document.getElementById('channelUrl').value;
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = '';
+    
+            
+    
+            // Send a POST request to the backend server
+            fetch('http://127.0.0.1:5000/download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ channelUrl: channelUrl })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    errorDiv.textContent = data.error;
+                } else {
+                    alert('Videos are being downloaded!');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorDiv.textContent = 'Failed to connect to the server.';
+            });
+        }
+    </script>
+    
+</body>
+</html>
