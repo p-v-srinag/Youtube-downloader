@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Channel Downloader</title>
+    
+    
+    <link rel="icon" type="image/png" href="https://files.oaiusercontent.com/file-fsF9rKXh0Fq6jUZOghAI5pAJ?se=2024-10-28T05%3A03%3A13Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D5adf8d72-dfb7-4547-ba45-9069735f3ede.webp&sig=4wgyl8AjZMlQFrKbZKEYWuMxzGBiOtSbDUxnp6BOQv4%3D">
+    
     <style>
         /* Basic CSS Reset */
         * {
@@ -112,8 +116,6 @@
             const channelUrl = document.getElementById('channelUrl').value;
             const errorDiv = document.getElementById('error');
             errorDiv.textContent = '';
-    
-            
     
             // Send a POST request to the backend server
             fetch('http://127.0.0.1:5000/download', {
