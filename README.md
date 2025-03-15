@@ -3,12 +3,14 @@
 This is a simple web application that allows users to download all videos from a specified YouTube channel URL. The application is built using Flask (a lightweight web framework for Python) and yt-dlp (a YouTube video downloader).
 
 **Features**
+
 Downloads all videos from a given YouTube channel URL.
 Uses yt-dlp, a popular command-line tool, to handle the actual video downloading.
 Saves videos locally on your machine.
 Built with Flask for easy web interaction.
 
 **Prerequisites**
+
 Before you begin, ensure you have met the following requirements:
 
 Python 3.6 or higher.
@@ -16,6 +18,7 @@ pip (Python package manager).
 A valid YouTube channel URL.
 
 **Installation**
+
 Clone the repository to your local machine:
 
     git clone https://github.com/p-v-srinag/Youtube-downloader.git
